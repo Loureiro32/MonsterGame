@@ -4,7 +4,6 @@ public class Player {
     protected int maxCards = 4;
     protected Monster[] monsters = new Monster[maxCards];
     protected String name;
-    protected int cardCounter = 0;
 
 
     public Player(String name) {
@@ -20,7 +19,6 @@ public class Player {
                 currentPlayerCards[i] = Game.dealCard();
             }
         }
-
     }
 
 }
