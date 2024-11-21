@@ -4,16 +4,23 @@ public class Player {
     protected int maxCards = 4;
     protected Monster[] monsters = new Monster[maxCards];
     protected String name;
-    protected int cardCounter = 0;
+    protected Monster[] cardsAlive;
+    protected int aliveCounter;
+    private boolean noCard;
+
 
     public Player(String name) {
         this.name = name;
     }
 
+    public boolean hasNoCard() {
+        return noCard;
+    }
 
     //* storeCard complete saving Monsters for players.
     public void storeCard(Player player) {
         Monster[] currentPlayerCards = player.monsters;
+        int cardCounter = 0;
         if (cardCounter < maxCards) {
             for (int i = 0; i < currentPlayerCards.length; i++) {
                 if (currentPlayerCards[i] == null) {
