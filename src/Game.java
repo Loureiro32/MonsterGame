@@ -6,9 +6,6 @@ import Monsters.Warewolf;
 
 public class Game {
     protected Player[] players = new Player[2];
-    protected int maxCards = 5;
-    protected int maxPlayers = 2;
-
 
     //todo Review how can save Monsters in Players Array?.
 
@@ -18,8 +15,7 @@ public class Game {
 
     }
 
-
-    //! Review this to do implementation with #storeCards function
+    //! Review this to do implementation on #storeCards function
     //create a Single Monster Card.
     public static Monster dealCard() {
         int scope = (int) (Math.random() * 100 + 1);
