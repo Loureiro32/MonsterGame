@@ -1,6 +1,7 @@
 package Monsters;
 
 public abstract class Monster {
+
     protected int life;
     protected int damage;
     protected boolean isDead;
@@ -9,8 +10,8 @@ public abstract class Monster {
         return damage;
     }
 
-    public void setDead(boolean dead) {
-        isDead = dead;
+    public boolean setDead() {
+        return isDead;
     }
 
     public void attack() {

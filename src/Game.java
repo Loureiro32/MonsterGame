@@ -33,7 +33,7 @@ public class Game {
     public void playerHands() {
         for (Player player : players) {
             Player.storeCard(player);
-            
+
         }
 
     }
@@ -42,10 +42,15 @@ public class Game {
         Player player1 = players[0];
         Player player2 = players[1];
 
-        while (player1.hasNoCard() && player2.hasNoCard()) {
-
+        while (player1.hasNoCards() && player2.hasNoCards()) {
+            System.out.println("Round : " + (roundTrack + 1));
             round(player1, player2);
             roundTrack++;
+        }
+        if (player1.hasNoCards()) {
+            System.out.println(player2.name + " wins!");
+        } else {
+            System.out.println(player1.name + " wins!");
         }
     }
 
@@ -55,10 +60,9 @@ public class Game {
         }
     }
 
-    //! TODO AFTER lUNCH
+    //! TODO
     //todo Create Rounds && define players to play
     //todo Define Randomly what cards play for each player
-    //todo If card life == 0 the cards cannot be summoned
     //todo each round update Monster life are taken the damage
     //! Create a method to create a game and run the game logic.
 

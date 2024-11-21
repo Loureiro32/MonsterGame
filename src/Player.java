@@ -1,12 +1,12 @@
 import Monsters.Monster;
 
 public class Player {
-    protected int maxCards = 4;
+    protected static int maxCards = 4;
     protected Monster[] monsters = new Monster[maxCards];
     protected String name;
-    protected Monster[] cardsAlive;
+    protected int numberOfCardsAlive = maxCards;
+    protected Monster[] aliveCards;
     protected int aliveCounter;
-    private boolean noCard;
 
 
     public Player(String name) {
@@ -29,7 +29,22 @@ public class Player {
         }
     }
 
-    public boolean hasNoCard() {
-        return noCard;
+    public boolean hasNoCards() {
+        return numberOfCardsAlive == 0;
+    }
+
+    public void updateAliveCards() {
+        aliveCards = new Monster[numberOfCardsAlive];
+        aliveCounter = 0;
+
+        for (Monster playerCard : monsters) {
+            if (!playerCard.setDead()) {
+                aliveCards[aliveCounter] = playerCard;
+                aliveCounter++;
+            }
+
+        }
+
+
     }
 }
