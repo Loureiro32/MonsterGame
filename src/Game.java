@@ -30,6 +30,14 @@ public class Game {
         }
     }
 
+    public void playerHands() {
+        for (Player player : players) {
+            Player.storeCard(player);
+            
+        }
+
+    }
+
     private void playGame() {
         Player player1 = players[0];
         Player player2 = players[1];

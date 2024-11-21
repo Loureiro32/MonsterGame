@@ -13,12 +13,8 @@ public class Player {
         this.name = name;
     }
 
-    public boolean hasNoCard() {
-        return noCard;
-    }
-
     //* storeCard complete saving Monsters for players.
-    public void storeCard(Player player) {
+    public static void storeCard(Player player) {
         Monster[] currentPlayerCards = player.monsters;
         int cardCounter = 0;
         if (cardCounter < maxCards) {
@@ -31,5 +27,9 @@ public class Player {
         } else {
             System.out.println("No slots avaible to store more cards!!");
         }
+    }
+
+    public boolean hasNoCard() {
+        return noCard;
     }
 }
