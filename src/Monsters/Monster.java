@@ -14,7 +14,7 @@ public abstract class Monster {
         return isDead;
     }
 
-    public void attack() {
+    public void attack(Monster defendingMonster) {
         this.life -= damage;
     }
 

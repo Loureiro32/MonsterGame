@@ -20,10 +20,10 @@ public class Game {
     //! Review this to do implementation on #storeCards function
     //create a Monsters Card from object creation.
     public static Monster dealCard() {
-        int scope = (int) (Math.random() * 100 + 1);
-        if (scope <= 2) {
+        int probability = (int) (Math.random() * 100 + 1);
+        if (probability <= 2) {
             return new Vampire();
-        } else if (scope <= 60) {
+        } else if (probability <= 60) {
             return new Warewolf();
         } else {
             return new Mummy();
@@ -36,6 +36,10 @@ public class Game {
 
         }
 
+    }
+
+    public void starGame() {
+        playGame();
     }
 
     private void playGame() {
@@ -55,16 +59,46 @@ public class Game {
     }
 
     private void round(Player player1, Player player2) {
-        if (roundTrack % 2 == 0) {
 
+        //? Get the active and defending player based on round number
+
+        Player activePlayer = (roundTrack % 2 == 0) ? player1 : player2;
+        Player defendingPlayer = (roundTrack % 2 == 0) ? player2 : player1;
+
+        //? Update alive cards for both players
+
+        activePlayer.updateAliveCards();
+        defendingPlayer.updateAliveCards();
+
+        //? Select random monster from active player's alive cards
+
+        Monster attackingMonster = null;
+        Monster defendingMonster = null;
+
+        if (activePlayer.aliveCounter > 0) {
+            int attackerIndex = (int) (Math.random() * activePlayer.aliveCounter);
+            attackingMonster = activePlayer.aliveCards[attackerIndex];
+        }
+
+        if (defendingPlayer.aliveCounter > 0) {
+            int defenderIndex = (int) (Math.random() * defendingPlayer.aliveCounter);
+            defendingMonster = defendingPlayer.aliveCards[defenderIndex];
+        }
+
+        if (attackingMonster != null && defendingMonster != null) {
+
+            attackingMonster.attack(defendingMonster);
+
+            activePlayer.numberOfCardsAlive = activePlayer.aliveCounter;
+            defendingPlayer.numberOfCardsAlive = defendingPlayer.aliveCounter;
         }
     }
 
     //! TODO
-    //todo Create Rounds && define players to play
-    //todo Define Randomly what cards play for each player
+    //* Create Rounds && define players to play
+    //todo Define Randomly what cards play for each player // +/-
     //todo each round update Monster life are taken the damage
-    //! Create a method to create a game and run the game logic.
+    //* Create a method to create a game and run the game logic.
 
 
 }

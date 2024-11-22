@@ -2,7 +2,6 @@ package Monsters;
 
 public class Vampire extends Monster {
     int lifeRegen = 23;
-    int chance = (int) (Math.random() * 100) + 1;
 
     public Vampire() {
         super();
@@ -11,6 +10,7 @@ public class Vampire extends Monster {
     }
 
     public void bite() {
+        int chance = (int) (Math.random() * 100) + 1;
         if (life <= 560 && chance <= 20) {
             life += lifeRegen;
         }

@@ -25,7 +25,7 @@ public class Player {
                 }
             }
         } else {
-            System.out.println("No slots avaible to store more cards!!");
+            System.out.println("No slots available to store more cards!!");
         }
     }
 

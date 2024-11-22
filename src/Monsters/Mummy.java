@@ -10,7 +10,7 @@ public class Mummy extends Monster {
     }
 
     @Override
-    public void attack() {
+    public void attack(Monster defendingMonster) {
         if (counter >= 3) {
             System.out.println("Missed!!");
             return;
