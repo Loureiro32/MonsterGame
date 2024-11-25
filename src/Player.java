@@ -4,7 +4,7 @@ public class Player {
     protected static int maxCards = 4;
     protected Monster[] monsters = new Monster[maxCards];
     protected String name;
-    protected int numberOfCardsAlive = maxCards;
+    protected int numberOfCardsAlive;
     protected Monster[] aliveCards;
     protected int aliveCounter;
 
@@ -13,38 +13,24 @@ public class Player {
         this.name = name;
     }
 
-    //* storeCard complete saving Monsters for players.
-    public static void storeCard(Player player) {
-        Monster[] currentPlayerCards = player.monsters;
-        int cardCounter = 0;
-        if (cardCounter < maxCards) {
-            for (int i = 0; i < currentPlayerCards.length; i++) {
-                if (currentPlayerCards[i] == null) {
-                    currentPlayerCards[i] = Game.dealCard();
-                    cardCounter++;
-                }
-            }
-        } else {
-            System.out.println("No slots available to store more cards!!");
-        }
-    }
-
     public boolean hasNoCards() {
         return numberOfCardsAlive == 0;
     }
 
     public void updateAliveCards() {
-        aliveCards = new Monster[numberOfCardsAlive];
-        aliveCounter = 0;
-
-        for (Monster playerCard : monsters) {
-            if (!playerCard.setDead()) {
-                aliveCards[aliveCounter] = playerCard;
-                aliveCounter++;
+        int aliveCount = 0;
+        for (Monster monster : monsters) {
+            if (monster != null && !monster.setDead()) {
+                aliveCount++;
             }
-
         }
-
-
+        numberOfCardsAlive = aliveCount;
+        aliveCards = new Monster[aliveCount];
+        aliveCounter = 0;
+        for (Monster monster : monsters) {
+            if (monster != null && !monster.setDead()) {
+                aliveCards[aliveCounter++] = monster;
+            }
+        }
     }
 }

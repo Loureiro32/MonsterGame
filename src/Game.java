@@ -32,29 +32,43 @@ public class Game {
 
     public void playerHands() {
         for (Player player : players) {
-            Player.storeCard(player);
 
+            for (int i = 0; i < Player.maxCards; i++) {
+                Monster newCard = dealCard();
+                player.monsters[i] = newCard;
+            }
+            player.numberOfCardsAlive = Player.maxCards;
+            player.updateAliveCards();
+
+            System.out.println(player.name + " starts with " + player.numberOfCardsAlive + " monsters:");
+            for (Monster monster : player.monsters) {
+                System.out.println("- " + monster.getClass().getSimpleName());
+            }
         }
-
     }
 
-    public void starGame() {
+    public void startGame() {
+        System.out.println("=== Game Starting ===");
         playGame();
     }
 
     private void playGame() {
         Player player1 = players[0];
         Player player2 = players[1];
-
-        while (player1.hasNoCards() && player2.hasNoCards()) {
-            System.out.println("Round : " + (roundTrack + 1));
+        
+        while (!player1.hasNoCards() && !player2.hasNoCards()) {
+            System.out.println("\nRound : " + (roundTrack + 1));
             round(player1, player2);
             roundTrack++;
+            System.out.println(player1.name + " has " + player1.numberOfCardsAlive + " monsters alive");
+            System.out.println(player2.name + " has " + player2.numberOfCardsAlive + " monsters alive");
         }
+
+        System.out.println("\n=== Game Over ===");
         if (player1.hasNoCards()) {
-            System.out.println(player2.name + " wins!");
+            System.out.println(player2.name + " wins with " + player2.numberOfCardsAlive + " monsters remaining!");
         } else {
-            System.out.println(player1.name + " wins!");
+            System.out.println(player1.name + " wins with " + player1.numberOfCardsAlive + " monsters remaining!");
         }
     }
 
@@ -86,11 +100,11 @@ public class Game {
         }
 
         if (attackingMonster != null && defendingMonster != null) {
-
+            System.out.println(activePlayer.name + "'s " + attackingMonster.getClass().getSimpleName() +
+                    " attacks " + defendingPlayer.name + "'s " + defendingMonster.getClass().getSimpleName());
             attackingMonster.attack(defendingMonster);
-
-            activePlayer.numberOfCardsAlive = activePlayer.aliveCounter;
-            defendingPlayer.numberOfCardsAlive = defendingPlayer.aliveCounter;
+            activePlayer.updateAliveCards();
+            defendingPlayer.updateAliveCards();
         }
     }
 

@@ -1,9 +1,10 @@
 package Monsters;
+
 public class Warewolf extends Monster {
-    public Warewolf (){
+    public Warewolf() {
         super();
-        life = 650;
-        damage = 25;
+        life = 100;
+        damage = 100;
     }
 
 }
