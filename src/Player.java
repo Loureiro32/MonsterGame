@@ -20,7 +20,7 @@ public class Player {
     public void updateAliveCards() {
         int aliveCount = 0;
         for (Monster monster : monsters) {
-            if (monster != null && !monster.setDead()) {
+            if (monster != null && !monster.isDead()) {
                 aliveCount++;
             }
         }
@@ -28,7 +28,7 @@ public class Player {
         aliveCards = new Monster[aliveCount];
         aliveCounter = 0;
         for (Monster monster : monsters) {
-            if (monster != null && !monster.setDead()) {
+            if (monster != null && !monster.isDead()) {
                 aliveCards[aliveCounter++] = monster;
             }
         }

@@ -5,8 +5,8 @@ public class Mummy extends Monster {
 
     public Mummy() {
         super();
-        life = 100;
-        damage = 1000;
+        life = 420;
+        damage = 35;
     }
 
     @Override

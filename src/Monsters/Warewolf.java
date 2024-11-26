@@ -3,8 +3,8 @@ package Monsters;
 public class Warewolf extends Monster {
     public Warewolf() {
         super();
-        life = 100;
-        damage = 100;
+        life = 650;
+        damage = 25;
     }
 
 }

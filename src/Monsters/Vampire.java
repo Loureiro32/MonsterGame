@@ -6,7 +6,7 @@ public class Vampire extends Monster {
     public Vampire() {
         super();
         life = 1000;
-        damage = 125;
+        damage = 60;
     }
 
     public void bite() {

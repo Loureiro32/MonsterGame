@@ -55,7 +55,7 @@ public class Game {
     private void playGame() {
         Player player1 = players[0];
         Player player2 = players[1];
-        
+
         while (!player1.hasNoCards() && !player2.hasNoCards()) {
             System.out.println("\nRound : " + (roundTrack + 1));
             round(player1, player2);
@@ -107,13 +107,5 @@ public class Game {
             defendingPlayer.updateAliveCards();
         }
     }
-
-    //! TODO
-    //* Create Rounds && define players to play
-    //todo Define Randomly what cards play for each player // +/-
-    //todo each round update Monster life are taken the damage
-    //* Create a method to create a game and run the game logic.
-
-
 }
 
